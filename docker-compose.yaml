@@ -1,0 +1,16 @@
+version: "3"
+
+networks:
+  app-sso-network:
+    external: true
+
+services:
+  pdf:
+    build: ./pdf-generator
+    restart: 'always'
+    # 正式環境應該把 port forwarding 註解掉，避免被外網存取
+    ports:
+      - 15148:8080
+    volumes:
+      - ./pdf-generator/app:/app
+    container_name: app-pdf-generator
