@@ -196,10 +196,7 @@ class PDFPSReporte:
                     # Limit number of detail items to prevent content from being too long
                     for detail_item in self.masterReport[rule]['data'][:2]:  # Show at most 2 detail items
                         try:
-                            # Limit description length
                             description = str(detail_item['description'])
-                            if len(description) > 200:  # Limit description to 200 characters
-                                description = description[:200] + "..."
                             
                             detail_content += """· {details}<br/>{description}<br/><br/>""".format(
                                 details = detail_item['details'],
